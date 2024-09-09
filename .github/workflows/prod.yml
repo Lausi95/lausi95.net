@@ -7,7 +7,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    end:
+    env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       DOCKER_IMAGE: lausi95/lausi95-net:latest
