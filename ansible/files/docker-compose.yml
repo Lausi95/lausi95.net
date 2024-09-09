@@ -1,0 +1,20 @@
+services:
+  nginx:
+    image: lausi95/lausi95-net
+    networks: [traefik]
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.l95.rule=Host(`lausi95.net`) || Host(`www.lausi95.net`)
+      - traefik.http.routers.l95.entrypoint=websecure
+      - traefik.http.routers.l95.tls.certresolver=letsencrypt
+      - traefik.http.routers.l95.middlewares=l95-redirect
+      - traefik.http.middlewares.l95-redirect.redirectregex.regex=^https?://www.lausi95.net/(.*)
+      - traefik.http.middlewares.l95-redirect.redirectregex.replacement=https://lausi95.net/$${1}
+      - traefik.http.middlewares.l95-redirect.redirectregex.permanent=true
+
+networks:
+  traefik:
+    external: true
+    name: traefik
+
