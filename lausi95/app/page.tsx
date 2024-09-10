@@ -1,12 +1,23 @@
+import BasicPage from "./components/templates/BasicPage";
+
 export default function Home() {
     return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <h1 className="size-xl font-bold">Tom Lausmann</h1>
-                <div>Site under construction</div>
-            </main>
-            <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-            </footer>
-        </div>
+        <BasicPage page="home" subtitle="Home">
+            <div className="border border-gray-700 rounded p-2">
+                <p>
+                    Hello! My Name is Tom Lausmann and this is going to be my personal
+                    Website. Here, you will find everything that I want you to know about
+                    me as a person, my hobbies and personal projects.
+                </p>
+                <p className="font-bold">
+                    This site is currently under construction! So dont wonder if
+                    parts dont feel super snappy, are incomplete or feel empty.
+                </p>
+                <p className="font-bold">
+                    Stay Tuned!
+                </p>
+            </div>
+        </BasicPage>
     );
 }
+
