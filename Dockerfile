@@ -1,3 +1,3 @@
 FROM nginx
-# COPY ./target /usr/share/nginx/html
+COPY ./lausi95/out /usr/share/nginx/html
 
