@@ -4,27 +4,36 @@ on:
     branches: [main]
 
 jobs:
-  generate:
-    name: Generate
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v4
-      - run: npm install
-      - run: npm run generate
-
   build:
     name: Build
-    needs: [generate]
     runs-on: ubuntu-latest
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       DOCKER_IMAGE: lausi95/lausi95-net:latest
     steps:
-      - uses: actions/checkout@v4
-      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run: docker build -t $DOCKER_IMAGE .
-      - run: docker push $DOCKER_IMAGE
+      - name: Checkout Sources
+        uses: actions/checkout@v4
+
+      - name: Initialize Node Environment
+        uses: actions/setup-node@v4
+
+      - name: Login to docker
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      - name: Install Dependencies
+        working-directory: ./lausi95
+        run: npm install
+        
+      - name: Generate Site 
+        working-directory: ./lausi95
+        run: npm run generate
+
+      - name: Build Docker Image
+        run: docker build -t $DOCKER_IMAGE .
+
+      - name: Push Image to Dockerhub
+        run: docker push $DOCKER_IMAGE
 
   deploy:
     name: Deploy
