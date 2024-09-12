@@ -16,9 +16,9 @@ export default function Code({ code }: CodeProps) {
     useEffect(() => {
         hljs.registerLanguage("kotlin", kotlin);
         hljs.registerLanguage("java", java);
-        var highlighted = hljs.highlightAuto(code);
+        const highlighted = hljs.highlightAuto(code);
         setFormattedCode(highlighted.value);
-    });
+    }, [code]);
 
     return <pre><code dangerouslySetInnerHTML={{ __html: formattedCode }}></code></pre>;
 }

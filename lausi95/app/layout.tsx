@@ -28,9 +28,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <Head>
-                <Script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></Script>
-            </Head>
+            <Script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></Script>
+            <Head> </Head>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 {children}
             </body>
