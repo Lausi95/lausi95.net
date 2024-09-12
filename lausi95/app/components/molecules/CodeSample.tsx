@@ -17,7 +17,9 @@ export default function CodeSample({ code, language, title, copyable }: CodeSamp
                 </div>
                 {(copyable ?? true) && <CopyButton content={code} />}
             </div>
-            <Code code={code} />
+            <div className="overflow-x-scroll">
+                <Code code={code} />
+            </div>
         </div>
     );
 }
