@@ -36,7 +36,7 @@ export default function Navigation({ page }: NavigationProps) {
             <div className="p-2 border-b border-gray-700"></div>
             {items.map(item => (
                 <Link key={item.href}
-                    className={'px-4 py-2 border-b-2 ' + (item.active ? 'border-emerald-300 font-bold' : 'border-gray-700')}
+                    className={'px-4 py-2 ' + (item.active ? 'border-emerald-300 border-b-2 font-bold' : 'border-gray-700 border-b')}
                     href={item.href}>
                     <div className="flex justify-center items-center gap-4">
                         <div><FontAwesomeIcon icon={item.icon} className="h-[20px]" /></div>

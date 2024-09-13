@@ -1,10 +1,12 @@
 import CodeSample from "./components/molecules/CodeSample";
 import BasicPage from "./components/templates/BasicPage";
 import Block from "./components/atoms/Block";
+import Headline from "./components/atoms/Headline";
 
 export default async function Home() {
     return (
         <BasicPage page="home" subtitle="Home">
+            <Headline>About me!</Headline>
             <Block paragraph>
                 Hello! My Name is Tom Lausmann and this is going to be my
                 personal Website. Here, you will find everything that I want
