@@ -1,12 +1,8 @@
+import { promises as fs } from 'fs';
 import CodeSample from "./components/molecules/CodeSample";
 import BasicPage from "./components/templates/BasicPage";
 
-export default function Home() {
-
-    const someCode = `public static void main(String[] args) {
-  System.out.println("Hallo, Welt!");
-}`;
-
+export default async function Home() {
     return (
         <BasicPage page="home" subtitle="Home">
             <p>
@@ -21,7 +17,7 @@ export default function Home() {
             <p className="font-bold">
                 Stay Tuned!
             </p>
-            <CodeSample title="Example Code" code={someCode} language="Java" />
+            <CodeSample title="Example Code" src="sample.kt" language="Java" />
         </BasicPage>
     );
 }
